@@ -45,9 +45,28 @@ class Solution:
         # print(nums)
         return last_unique + 1
 
+    def majorityElement(self, nums: list[int]) -> int:
+        """169. Majority Element"""
+        freq = dict()
+        half = len(nums) // 2
+
+        for el in nums:
+            if el in freq:
+                freq[el] += 1
+            else:
+                freq[el] = 1
+
+        for k, v in freq.items():
+            if v > half:
+                return k
+
+        # print(freq)
+        return 0
+
 
 if __name__ == "__main__":
     s = Solution()
     # print(s.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
     # print(s.removeElement(nums=[3, 2, 2, 3], val=3))
-    print(s.removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
+    # print(s.removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
+    print(s.majorityElement(nums=[2, 2, 1, 1, 1, 2, 2]))
