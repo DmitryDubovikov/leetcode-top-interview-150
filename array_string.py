@@ -77,6 +77,19 @@ class Solution:
 
         return max_profit
 
+    def romanToInt(self, s: str) -> int:
+        """13. Roman to Integer"""
+        res = 0
+        rv = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+        for i in range(len(s) - 1):
+            if rv[s[i]] < rv[s[i + 1]]:
+                res -= rv[s[i]]
+            else:
+                res += rv[s[i]]
+
+        return res + rv[s[-1]]
+
 
 if __name__ == "__main__":
     s = Solution()
@@ -84,4 +97,5 @@ if __name__ == "__main__":
     # print(s.removeElement(nums=[3, 2, 2, 3], val=3))
     # print(s.removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
     # print(s.majorityElement(nums=[2, 2, 1, 1, 1, 2, 2]))
-    print(s.maxProfit(prices=[7, 1, 5, 3, 6, 4]))
+    # print(s.maxProfit(prices=[7, 1, 5, 3, 6, 4]))
+    print(s.romanToInt("MCMXCIV"))
