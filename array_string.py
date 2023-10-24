@@ -21,9 +21,33 @@ class Solution:
             n -= 1
             l -= 1
 
-        print(nums1)
+        # print(nums1)
+
+    def removeElement(self, nums: list[int], val: int) -> int:
+        """27. Remove Element"""
+        k = 0
+
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[k] = nums[i]
+                k += 1
+
+        return k
+
+    def removeDuplicates(self, nums: list[int]) -> int:
+        """26. Remove Duplicates from Sorted Array"""
+        last_unique = 0
+
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1]:
+                last_unique += 1
+                nums[last_unique] = nums[i]
+        # print(nums)
+        return last_unique + 1
 
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
+    # print(s.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
+    # print(s.removeElement(nums=[3, 2, 2, 3], val=3))
+    print(s.removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
