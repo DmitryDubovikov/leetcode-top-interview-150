@@ -63,10 +63,25 @@ class Solution:
         # print(freq)
         return 0
 
+    def maxProfit(self, prices: list[int]) -> int:
+        """121. Best Time to Buy and Sell Stock"""
+        max_profit = 0
+        l, r = 0, 1
+
+        while r < len(prices):
+            if prices[l] >= prices[r]:
+                l = r
+            else:
+                max_profit = max(max_profit, prices[r] - prices[l])
+            r += 1
+
+        return max_profit
+
 
 if __name__ == "__main__":
     s = Solution()
     # print(s.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
     # print(s.removeElement(nums=[3, 2, 2, 3], val=3))
     # print(s.removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
-    print(s.majorityElement(nums=[2, 2, 1, 1, 1, 2, 2]))
+    # print(s.majorityElement(nums=[2, 2, 1, 1, 1, 2, 2]))
+    print(s.maxProfit(prices=[7, 1, 5, 3, 6, 4]))
