@@ -106,13 +106,22 @@ class Solution:
 
     def longestCommonPrefix(self, strs: list[str]) -> str:
         """14. Longest Common Prefix"""
-        res = ""
-        for i in range(len(strs[0])):
-            for j in range(1, len(strs)):
-                if i == len(strs[j]) or strs[0][i] != strs[j][i]:
-                    return res
-            res += strs[0][i]
-        return ""
+        if not strs:
+            return ""
+        prefix = strs[0]
+        for string in strs[1:]:
+            while string.find(prefix) != 0:
+                prefix = prefix[:-1]
+                if not prefix:
+                    return ""
+        return prefix
+
+    def strStr(self, haystack: str, needle: str) -> int:
+        """28. Find the Index of the First Occurrence in a String"""
+        for i in range(len(haystack) - len(needle) + 1):
+            if haystack[i : i + len(needle)] == needle:
+                return i
+        return -1
 
 
 if __name__ == "__main__":
@@ -125,4 +134,5 @@ if __name__ == "__main__":
     # print(s.romanToInt("MCMXCIV"))
     # print(s.lengthOfLastWord("   fly me   to   the moon  "))
     # print(s.lengthOfLastWord("Hello World"))
-    print(s.longestCommonPrefix(strs=["flower", "flow", "flight"]))
+    # print(s.longestCommonPrefix(strs=["flower", "flow", "flight"]))
+    print(s.strStr(haystack="sadbutsad", needle="sad"))
