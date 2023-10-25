@@ -90,6 +90,20 @@ class Solution:
 
         return res + rv[s[-1]]
 
+    def lengthOfLastWord(self, s: str) -> int:
+        """58. Length of Last Word"""
+        res = 0
+        for el in s[::-1]:
+            if res != 0:
+                if el == " ":
+                    return res
+                else:
+                    res += 1
+            else:  # res == 0
+                if el != " ":
+                    res = 1
+        return res
+
 
 if __name__ == "__main__":
     s = Solution()
@@ -98,4 +112,6 @@ if __name__ == "__main__":
     # print(s.removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
     # print(s.majorityElement(nums=[2, 2, 1, 1, 1, 2, 2]))
     # print(s.maxProfit(prices=[7, 1, 5, 3, 6, 4]))
-    print(s.romanToInt("MCMXCIV"))
+    # print(s.romanToInt("MCMXCIV"))
+    print(s.lengthOfLastWord("   fly me   to   the moon  "))
+    print(s.lengthOfLastWord("Hello World"))
