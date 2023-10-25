@@ -15,7 +15,21 @@ class Solution:
                 r -= 1
         return True
 
+    def isSubsequence(self, s: str, t: str) -> bool:
+        """392. Is Subsequence"""
+        if s == "":
+            return True
+        i = 0
+        for j in range(len(t)):
+            if t[j] == s[i]:
+                i += 1
+                if i == len(s):
+                    return True
+        return False
+
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.isPalindrome(s="A man, a plan, a canal: Panama"))
+    # print(s.isPalindrome(s="A man, a plan, a canal: Panama"))
+    print(s.isSubsequence(s="abc", t="ahbgdc"))
+    print(s.isSubsequence(s="axc", t="ahbgdc"))
