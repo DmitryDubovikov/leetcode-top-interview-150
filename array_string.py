@@ -104,6 +104,16 @@ class Solution:
                     res = 1
         return res
 
+    def longestCommonPrefix(self, strs: list[str]) -> str:
+        """14. Longest Common Prefix"""
+        res = ""
+        for i in range(len(strs[0])):
+            for j in range(1, len(strs)):
+                if i == len(strs[j]) or strs[0][i] != strs[j][i]:
+                    return res
+            res += strs[0][i]
+        return ""
+
 
 if __name__ == "__main__":
     s = Solution()
@@ -113,5 +123,6 @@ if __name__ == "__main__":
     # print(s.majorityElement(nums=[2, 2, 1, 1, 1, 2, 2]))
     # print(s.maxProfit(prices=[7, 1, 5, 3, 6, 4]))
     # print(s.romanToInt("MCMXCIV"))
-    print(s.lengthOfLastWord("   fly me   to   the moon  "))
-    print(s.lengthOfLastWord("Hello World"))
+    # print(s.lengthOfLastWord("   fly me   to   the moon  "))
+    # print(s.lengthOfLastWord("Hello World"))
+    print(s.longestCommonPrefix(strs=["flower", "flow", "flight"]))
