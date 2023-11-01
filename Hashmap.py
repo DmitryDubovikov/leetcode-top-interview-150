@@ -19,11 +19,18 @@ class Solution:
         for ch in t:
             mt.append(t.index(ch))
         # print(ms, mt)
-        ms = [s.index(ch) for ch in s]
         return ms == mt
+
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        """290. Word Pattern"""
+        map_p = [pattern.index(ch) for ch in pattern]
+        s_list = s.split(" ")
+        map_s = [s_list.index(w) for w in s_list]
+        return map_p == map_s
 
 
 if __name__ == "__main__":
     s = Solution()
     # print(s.canConstruct(ransomNote="aa", magazine="aab"))
-    print(s.isIsomorphic(s="bbbaaaba", t="aaabbbba"))
+    # print(s.isIsomorphic(s="bbbaaaba", t="aaabbbba"))
+    print(s.wordPattern(pattern="abba", s="dog cat cat dog"))
