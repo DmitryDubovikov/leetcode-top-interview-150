@@ -28,9 +28,23 @@ class Solution:
         map_s = [s_list.index(w) for w in s_list]
         return map_p == map_s
 
+    def isAnagram(self, s: str, t: str) -> bool:
+        """242. Valid Anagram"""
+        from collections import defaultdict
+
+        counter = defaultdict(int)
+
+        for ch in s:
+            counter[ch] += 1
+        for ch in t:
+            counter[ch] -= 1
+
+        return all(v == 0 for v in counter.values())
+
 
 if __name__ == "__main__":
     s = Solution()
     # print(s.canConstruct(ransomNote="aa", magazine="aab"))
     # print(s.isIsomorphic(s="bbbaaaba", t="aaabbbba"))
-    print(s.wordPattern(pattern="abba", s="dog cat cat dog"))
+    # print(s.wordPattern(pattern="abba", s="dog cat cat dog"))
+    print(s.isAnagram(s="anagram", t="nagaram"))
