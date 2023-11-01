@@ -27,9 +27,25 @@ class Solution:
                     return True
         return False
 
+    def twoSum(self, numbers: list[int], target: int) -> list[int]:
+        """167. Two Sum II - Input Array Is Sorted"""
+        i = 0
+        j = len(numbers) - 1
+
+        while i < j:
+            if numbers[i] + numbers[j] == target:
+                return [i + 1, j + 1]
+            elif numbers[i] + numbers[j] > target:
+                j -= 1
+            else:
+                i += 1
+
+        return []
+
 
 if __name__ == "__main__":
     s = Solution()
     # print(s.isPalindrome(s="A man, a plan, a canal: Panama"))
-    print(s.isSubsequence(s="abc", t="ahbgdc"))
-    print(s.isSubsequence(s="axc", t="ahbgdc"))
+    # print(s.isSubsequence(s="abc", t="ahbgdc"))
+    # print(s.isSubsequence(s="axc", t="ahbgdc"))
+    print(s.twoSum(numbers=[2, 7, 11, 15], target=9))
