@@ -49,8 +49,7 @@ class Solution:
                 return False
             seen.add(n)
             n = sum([int(i) ** 2 for i in str(n)])
-        else:
-            return True
+        return True
 
 
 if __name__ == "__main__":
