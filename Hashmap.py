@@ -41,10 +41,22 @@ class Solution:
 
         return all(v == 0 for v in counter.values())
 
+    def isHappy(self, n: int) -> bool:
+        """202. Happy Number"""
+        seen = set()
+        while n != 1:
+            if n in seen:
+                return False
+            seen.add(n)
+            n = sum([int(i) ** 2 for i in str(n)])
+        else:
+            return True
+
 
 if __name__ == "__main__":
     s = Solution()
     # print(s.canConstruct(ransomNote="aa", magazine="aab"))
     # print(s.isIsomorphic(s="bbbaaaba", t="aaabbbba"))
     # print(s.wordPattern(pattern="abba", s="dog cat cat dog"))
-    print(s.isAnagram(s="anagram", t="nagaram"))
+    # print(s.isAnagram(s="anagram", t="nagaram"))
+    print(s.isHappy(n=1111111))
